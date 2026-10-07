@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>PICAS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+
+  <!-- ===================== AUTH SCREEN ===================== -->
+  <!-- Shown once, before a Telegram account is bound to an email -->
+  <section id="auth-screen" class="screen">
+    <div class="auth-card">
+      <div class="brand-mark">
+        <div class="brand-orb"></div>
+        <h1 class="brand-name">PICAS</h1>
+      </div>
+      <p class="auth-subtitle">Link one account to start earning. This binds permanently to your Telegram ID.</p>
+
+      <button id="google-signin-btn" class="btn btn-primary">
+        Continue with Google
+      </button>
+
+      <div class="divider"><span>or</span></div>
+
+      <form id="email-form" class="email-form">
+        <input id="email-input" type="email" placeholder="Email address" autocomplete="email" required />
+        <button type="submit" class="btn btn-secondary">Send verification code</button>
+      </form>
+
+      <form id="otp-form" class="otp-form hidden">
+        <input id="otp-input" type="text" inputmode="numeric" maxlength="6" placeholder="6-digit code" required />
+        <button type="submit" class="btn btn-secondary">Verify &amp; continue</button>
+        <p class="otp-hint">Code sent to <span id="otp-email-echo"></span></p>
+      </form>
+
+      <p id="auth-error" class="auth-error hidden"></p>
+
+      <p class="legal-note">
+        Points track your participation and carry no guaranteed value.
+        If a PICAS token is launched, allocations may be based on points
+        earned under the program's terms in effect at that time.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===================== MAIN APP SCREEN ===================== -->
+  <section id="main-screen" class="screen hidden">
+
+    <header class="topbar">
+      <div class="user-chip">
+        <div class="user-dot"></div>
+        <span id="user-label">—</span>
+      </div>
+      <div class="network-pill">
+        <span class="network-dot"></span>
+        PICAS Network
+      </div>
+    </header>
+
+    <div class="balance-block">
+      <span class="balance-label">Your balance</span>
+      <div class="balance-value">
+        <span id="points-value">0</span>
+        <span class="balance-unit">PTS</span>
+      </div>
+      <span id="rate-hint" class="rate-hint">Earning 10 pts / tap</span>
+    </div>
+
+    <div class="orb-stage">
+      <div id="boost-ring" class="boost-ring hidden"></div>
+      <button id="tap-orb" class="orb" aria-label="Tap to earn">
+        <span class="orb-core"></span>
+        <span class="orb-glyph">P</span>
+      </button>
+      <div id="float-layer" class="float-layer"></div>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat-card">
+        <span class="stat-label">Today's taps</span>
+        <span id="today-taps" class="stat-value">0</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Time left today</span>
+        <span id="time-left" class="stat-value">5:00:00</span>
+      </div>
+    </div>
+
+    <button id="watch-ad-btn" class="btn btn-boost">
+      <span>Watch ad — unlock 40 pts/tap</span>
+      <span id="boost-timer" class="boost-timer hidden"></span>
+    </button>
+
+    <p id="cap-banner" class="cap-banner hidden">
+      Daily tapping limit reached. Resets at 00:00 UTC.
+    </p>
+
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,481 @@
+/* ==========================================================================
+   PICAS — design tokens
+   Base: deep indigo-black. Accent: electric violet + warm amber (boost state).
+   Display type: Space Grotesk. Data/numeric type: JetBrains Mono.
+   ========================================================================== */
+
+:root {
+  --bg: #0a0b12;
+  --panel: #13151f;
+  --panel-raised: #181b28;
+  --border: #262a3a;
+
+  --text: #e9e9f2;
+  --text-muted: #8a8ca3;
+
+  --violet: #7c5cff;
+  --violet-soft: #a78bfa;
+  --amber: #ffb020;
+  --green: #2ce6a6;
+  --red: #ff5c7a;
+
+  --radius-lg: 28px;
+  --radius-md: 16px;
+  --radius-sm: 10px;
+
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  background: radial-gradient(120% 90% at 50% -10%, #171a2b 0%, var(--bg) 55%);
+  color: var(--text);
+  font-family: var(--font-display);
+  -webkit-tap-highlight-color: transparent;
+  overflow-x: hidden;
+}
+
+body {
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.hidden { display: none !important; }
+
+button {
+  font-family: inherit;
+  border: none;
+  cursor: pointer;
+}
+
+input {
+  font-family: inherit;
+}
+
+/* ==========================================================================
+   Screens
+   ========================================================================== */
+
+.screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 20px 28px;
+}
+
+/* ==========================================================================
+   Auth screen
+   ========================================================================== */
+
+#auth-screen {
+  justify-content: center;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.brand-mark {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 8px;
+}
+
+.brand-orb {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 32% 28%, #c4b5ff 0%, var(--violet) 42%, #3f2d8f 100%);
+  box-shadow:
+    0 0 0 1px rgba(124, 92, 255, 0.35),
+    0 14px 40px -10px rgba(124, 92, 255, 0.65),
+    inset 0 -6px 14px rgba(0,0,0,0.35);
+}
+
+.brand-name {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+.auth-subtitle {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0 0 6px;
+}
+
+.btn {
+  width: 100%;
+  padding: 15px 18px;
+  border-radius: var(--radius-md);
+  font-size: 15px;
+  font-weight: 600;
+  transition: transform 120ms ease, filter 120ms ease;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn-primary {
+  background: linear-gradient(180deg, #fff 0%, #e7e7ef 100%);
+  color: #14151f;
+}
+
+.btn-secondary {
+  background: var(--panel-raised);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.btn-secondary:hover { filter: brightness(1.08); }
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-muted);
+  font-size: 13px;
+  margin: 2px 0;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.email-form, .otp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.email-form input, .otp-form input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--text);
+  font-size: 15px;
+}
+
+.email-form input:focus, .otp-form input:focus {
+  outline: 2px solid var(--violet);
+  outline-offset: 1px;
+}
+
+.otp-hint {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  text-align: center;
+  margin: 2px 0 0;
+}
+
+.auth-error {
+  color: var(--red);
+  font-size: 13px;
+  text-align: center;
+  margin: 0;
+}
+
+.legal-note {
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: var(--text-muted);
+  text-align: center;
+  margin: 10px 0 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+
+/* ==========================================================================
+   Main screen — topbar
+   ========================================================================== */
+
+#main-screen {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.topbar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.user-chip, .network-pill {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+
+.user-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--green);
+}
+
+.network-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--violet);
+}
+
+/* ==========================================================================
+   Balance
+   ========================================================================== */
+
+.balance-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.balance-label {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.balance-value {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-family: var(--font-mono);
+}
+
+#points-value {
+  font-size: 44px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.balance-unit {
+  font-size: 15px;
+  color: var(--violet-soft);
+  font-weight: 500;
+}
+
+.rate-hint {
+  font-size: 12.5px;
+  color: var(--green);
+  font-family: var(--font-mono);
+}
+
+.rate-hint.boosted {
+  color: var(--amber);
+}
+
+/* ==========================================================================
+   The orb — 3D neon tap target
+   ========================================================================== */
+
+.orb-stage {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 26px 0 18px;
+}
+
+.boost-ring {
+  position: absolute;
+  width: 248px;
+  height: 248px;
+  border-radius: 50%;
+  border: 2px solid var(--amber);
+  box-shadow: 0 0 30px rgba(255, 176, 32, 0.45);
+  animation: ring-spin 6s linear infinite;
+}
+
+@keyframes ring-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.orb {
+  position: relative;
+  width: 210px;
+  height: 210px;
+  border-radius: 50%;
+  background: transparent;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: orb-breathe 4.5s ease-in-out infinite;
+  transition: transform 90ms ease;
+}
+
+.orb:active {
+  transform: scale(0.94);
+}
+
+@keyframes orb-breathe {
+  0%, 100% { filter: drop-shadow(0 0 28px rgba(124, 92, 255, 0.45)); }
+  50% { filter: drop-shadow(0 0 44px rgba(124, 92, 255, 0.7)); }
+}
+
+.orb-core {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 34% 26%, #d9cfff 0%, #9b7bff 20%, var(--violet) 48%, #2c1f73 100%);
+  box-shadow:
+    inset 0 -18px 30px rgba(0,0,0,0.45),
+    inset 0 10px 20px rgba(255,255,255,0.18),
+    0 0 0 1px rgba(255,255,255,0.06);
+}
+
+.orb-glyph {
+  position: relative;
+  font-family: var(--font-display);
+  font-size: 54px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.92);
+  text-shadow: 0 2px 10px rgba(0,0,0,0.4);
+}
+
+.float-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.float-pop {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, 0);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--green);
+  animation: float-up 650ms ease-out forwards;
+  pointer-events: none;
+}
+
+.float-pop.boosted { color: var(--amber); }
+
+@keyframes float-up {
+  0%   { opacity: 0; transform: translate(-50%, 0) scale(0.8); }
+  15%  { opacity: 1; transform: translate(-50%, -10px) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -70px) scale(1); }
+}
+
+/* ==========================================================================
+   Stats
+   ========================================================================== */
+
+.stat-row {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.stat-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.stat-value {
+  font-family: var(--font-mono);
+  font-size: 19px;
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   Boost button + cap banner
+   ========================================================================== */
+
+.btn-boost {
+  width: 100%;
+  padding: 15px 18px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, #2a2240 0%, #241a3d 100%);
+  border: 1px solid rgba(124, 92, 255, 0.4);
+  color: var(--violet-soft);
+  font-weight: 600;
+  font-size: 14.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-boost:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.boost-timer {
+  font-family: var(--font-mono);
+  color: var(--amber);
+}
+
+.cap-banner {
+  margin-top: 14px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-muted);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  width: 100%;
+}
+
+/* ==========================================================================
+   Small screens
+   ========================================================================== */
+
+@media (max-width: 360px) {
+  .orb { width: 180px; height: 180px; }
+  .orb-glyph { font-size: 46px; }
+  .boost-ring { width: 214px; height: 214px; }
+  #points-value { font-size: 38px; }
+}
